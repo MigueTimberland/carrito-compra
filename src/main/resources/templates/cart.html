@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script>
+        // Función para actualizar el total dinámicamente
+        function updateTotal() {
+            let total = 0;
+            document.querySelectorAll('.cart-item').forEach(function(row) {
+                const price = parseFloat(row.querySelector('.price').innerText);
+                const quantity = parseInt(row.querySelector('.quantity-input').value);
+                total += price * quantity;
+            });
+            document.getElementById('totalPrice').innerText = total.toFixed(2);
+        }
+
+        // Llama a la función para actualizar el total cuando cambie la cantidad
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.quantity-input').forEach(function(input) {
+                input.addEventListener('change', updateTotal);
+            });
+            // Inicializa el total al cargar la página
+            updateTotal();
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>Carrito de Compras</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cartItems}" class="cart-item">
+            <td th:text="${item.product.id}"></td>
+            <td th:text="${item.product.name}"></td>
+            <td th:text="${item.product.price}" class="price"></td>
+            <td>
+                <input type="number" min="1" th:value="${item.quantity}" class="quantity-input">
+            </td>
+            <td th:text="${item.product.price * item.quantity}" class="subtotal"></td>
+            <td>
+                <a th:href="@{/cart/remove/{id}(id=${item.product.id})}" class="btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h2>Total: <span id="totalPrice"></span></h2>
+    <a href="/products" class="btn-primary">Seguir comprando</a>
+    <a href="/cart/clear" class="btn-secondary">Vaciar carrito</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/* General body styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container: Ajustado para pantallas más grandes */
+.container {
+    max-width: 800px;  /* Aumentar el ancho máximo del contenedor */
+    width: 100%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Ajuste del tamaño de las cajas de texto */
+input {
+    width: 60%;  /* Reducir el ancho a un 60% */
+    padding: 8px;  /* Ajustar el padding */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Alineación horizontal de botones */
+.form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+button, .btn-secondary {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .btn-secondary:hover {
+    opacity: 0.8;
+}
+
+/* Responsivo: Ajusta el contenedor en pantallas pequeñas */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;  /* Ocupa el ancho completo en pantallas pequeñas */
+        padding: 15px;
+    }
+
+    /* Ajuste para pantallas pequeñas: cajas de texto ocupan 100% */
+    input {
+        width: 100%;  /* En pantallas pequeñas, las cajas de texto ocupan el 100% */
+    }
+}

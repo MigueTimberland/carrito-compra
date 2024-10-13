@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Bienvenido a la tienda en línea</h1>
+    <a href="/products" class="btn">Ver Productos</a>
+    <a href="/cart" class="btn">Ver Carrito</a>
+
+    <!-- Mostrar "Iniciar sesión" si no ha iniciado sesión -->
+    <a href="/login" class="btn" th:if="${#httpServletRequest.remoteUser == null}">Iniciar sesión</a>
+
+    <!-- Mostrar "Cerrar sesión" si ya ha iniciado sesión -->
+    <a href="/logout" class="btn" th:if="${#httpServletRequest.remoteUser != null}">Cerrar sesión</a>
+</div>
+</body>
+</html>

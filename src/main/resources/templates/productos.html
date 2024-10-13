@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>catálogo de Productos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="page-title">catálogo de Productos</h1>
+
+    <!-- Barra de búsqueda -->
+    <form th:action="@{/products/search}" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Buscar productos..." class="input-search">
+        <button type="submit" class="btn-primary">Buscar</button>
+    </form>
+
+    <!-- Filtrar por precio -->
+    <form th:action="@{/products/filter}" method="get" class="filter-form">
+        <label>Precio Mínimo:</label>
+        <input type="number" name="minPrice" step="0.01" placeholder="Min" class="input-filter">
+        <label>Precio Máximo:</label>
+        <input type="number" name="maxPrice" step="0.01" placeholder="Max" class="input-filter">
+        <button type="submit" class="btn-primary">Filtrar</button>
+    </form>
+
+    <!-- Mostrar mensaje si no hay productos -->
+    <div th:if="${message}" class="alert alert-warning">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- Tabla de productos (sin cantidad) -->
+    <table class="products-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td> <!-- Eliminamos la cantidad -->
+            <td>
+                <a href="/products/add" class="btn-success">Añadir Producto</a>
+                <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn-warning">Editar</a>
+                <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn-danger">Eliminar</a>
+
+             </td>
+         </tr>
+         </tbody>
+     </table>
+
+    <a th:href="@{/products/add}" class="btn-success">Añadir Producto</a>
+
+    <a href="/" class="btn-secondary">Volver al Inicio</a>
+        <a href="/cart/view" class="btn-primary">Carrito</a>
+        <a href="/products/export" class="btn-primary">Exportar Productos a SQL</a>
+</div>
+</body>
+</html>

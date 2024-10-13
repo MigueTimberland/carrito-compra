@@ -1,0 +1,118 @@
+/* Reset de márgenes y estilos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales del body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #007bff, #00d2ff);
+    color: #333;
+}
+
+/* Contenedor del login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Caja de login */
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Título del login */
+.login-title {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+/* Formulario */
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de enfoque en los campos */
+.login-form input[type="text"]:focus, .login-form input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+/* Botón estilizado */
+button.btn-primary {
+    padding: 12px 20px;
+    width: 100%;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Mensajes de error y logout */
+.error-message {
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.logout-message {
+    color: green;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 30px;
+    }
+}
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Producto Añadido al Carrito</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Producto Añadido al Carrito</h1>
+
+    <!-- Verificar si el producto fue añadido -->
+    <div th:if="${addedProduct != null}">
+        <h2>El siguiente producto ha sido añadido al carrito:</h2>
+        <ul>
+            <li>ID: <span th:text="${addedProduct.id}"></span></li>
+            <li>Nombre: <span th:text="${addedProduct.name}"></span></li>
+            <li>Precio: <span th:text="${addedProduct.price}"></span></li>
+        </ul>
+    </div>
+
+    <!-- Mostrar el carrito completo -->
+    <h2>Productos en tu carrito</h2>
+    <table class="products-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${cartItems}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Mostrar el total del carrito -->
+    <div>
+        <h3>Total: $<span th:text="${totalPrice}"></span></h3>
+    </div>
+
+    <!-- Botones -->
+    <a href="/products" class="btn-primary">Seguir comprando</a>
+    <a href="/cart/clear" class="btn-danger">Vaciar Carrito</a>
+</div>
+</body>
+</html>
