@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>catálogo de Productos</title>
+    <title>Catálogo de Productos</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div class="container">
-    <h1 class="page-title">catálogo de Productos</h1>
+    <h1 class="page-title">Catálogo de Productos</h1>
 
     <!-- Barra de búsqueda -->
     <form th:action="@{/products/search}" method="get" class="search-form">
@@ -44,7 +44,7 @@
             <td th:text="${product.name}"></td>
             <td th:text="${product.price}"></td> <!-- Eliminamos la cantidad -->
             <td>
-                <a href="/products/add" class="btn-success">Añadir Producto</a>
+                <a th:href="@{/cart/add/{id}(id=${product.id})}" class="btn-secondary">Añadir al carrito</a>
                 <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn-warning">Editar</a>
                 <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn-danger">Eliminar</a>
 
